@@ -30,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: colserra/dlor:latest
+          tags: colserra/auxtg:latest
