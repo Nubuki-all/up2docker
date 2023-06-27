@@ -30,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: colserra/auxtg:latest
+          tags: colserra/fedora37_wf:latest
