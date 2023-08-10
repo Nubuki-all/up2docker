@@ -8,6 +8,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    name: build for amd64/arm64
     steps:
       -
         name: Checkout
@@ -29,5 +30,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
-          tags: colserra/fedora37_wf:latest
+          tags: colserra/fedora37_wf:latest,colserra/fedora37_wf:10-08-23
