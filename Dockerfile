@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Africa/Lagos
 
 # Install Dependencies
-RUN dnf -qq -y update && dnf -qq -y install git aria2 bash xz wget curl pv jq python3-pip mediainfo procps-ng && if [[ $(arch) == 'arm64' ]]; then   dnf -qq -y install gcc python3-devel; fi && python3 -m pip install --upgrade pip
+RUN dnf -qq -y update && dnf -qq -y install git aria2 bash xz wget curl pv jq python3-pip mediainfo procps-ng gcc python3-devel && python3 -m pip install --upgrade pip
 
 # Install latest ffmpeg
 RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/64/) && \
@@ -19,4 +19,4 @@ COPY . .
 RUN pip3 install -r requirements.txt
 
 #cleanup
-RUN rm requirements.txt Dockerfile && dnf clean all && if [[ $(arch) == 'arm64' ]]; then   dnf -qq -y history undo last; fi 
+RUN rm requirements.txt Dockerfile && dnf -y remove gcc python3-devel && dnf clean all
