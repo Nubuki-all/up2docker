@@ -32,4 +32,4 @@ jobs:
           context: .
           platforms: linux/amd64, linux/arm64
           push: true
-          tags: colserra/fedora37_wf:latest,colserra/fedora37_wf:10-08-23
+          tags: colserra/fedora37_wf:latest,colserra/fedora37_wf:12-08-23
