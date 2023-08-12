@@ -19,4 +19,4 @@ COPY . .
 RUN pip3 install -r requirements.txt
 
 #cleanup
-RUN rm requirements.txt Dockerfile && if [[ $(arch) == 'arm64' ]]; then   dnf -qq -y history undo last; fi && dnf clean all
+RUN rm requirements.txt Dockerfile && if [[ $(arch) == 'aarch64' ]]; then   dnf -qq -y history undo last; fi && dnf clean all
