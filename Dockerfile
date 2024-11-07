@@ -19,4 +19,4 @@ RUN git clone https://github.com/Nubuki-all/Enc bot && cp bot/requirements.txt .
 RUN pip3 install -r requirements.txt
 
 #cleanup
-RUN rm requirements.txt Dockerfile && if [[ $(arch) == 'aarch64' ]]; then   dnf -qq -y history undo last; fi && dnf clean all
+RUN rm requirements.txt && if [[ $(arch) == 'aarch64' ]]; then   dnf -qq -y history undo last; fi && dnf clean all
