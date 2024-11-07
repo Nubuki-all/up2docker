@@ -26,10 +26,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      -
         name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           platforms: linux/amd64, linux/arm64
           push: true
-          tags: colserra/fedora37_wf:latest,colserra/fedora37_wf:12-08-23
+          tags: colserra/fedora37_wf:latest,colserra/fedora37_wf:${{ steps.date.outputs.date }}
