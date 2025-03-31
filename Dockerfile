@@ -13,7 +13,8 @@ RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/64/) && \
     wget -q https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-linux${arch}-gpl-7.1.tar.xz && tar -xvf *xz && cp *7.1/bin/* /usr/bin && rm -rf *xz && rm -rf *7.1
 
 # Install postgresql repo & latest postgresql 
-RUN dnf -qq -y install "https://download.postgresql.org/pub/repos/yum/reporpms/F-$(. /etc/os-release; echo $VERSION_ID)-$(arch)/pgdg-fedora-repo-latest.noarch.rpm"
+RUN dnf -qq -y install "https://download.postgresql.org/pub/repos/yum/reporpms/F-$(. /etc/os-release; echo $VERSION_ID)-x86_64/pgdg-fedora-repo-latest.noarch.rpm"
+RUN dnf -qq -y update && dnf list postgresql*-server
 RUN dnf -qq -y install postgresql17-server
 
 # Copy files from repo to home directory
