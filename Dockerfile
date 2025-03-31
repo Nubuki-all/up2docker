@@ -15,8 +15,6 @@ RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/64/) && \
 # Install postgresql repo & latest postgresql 
 RUN dnf -qq -y install "https://download.postgresql.org/pub/repos/yum/reporpms/F-$(. /etc/os-release; echo $VERSION_ID)-x86_64/pgdg-fedora-repo-latest.noarch.rpm"
 RUN dnf -qq -y install postgresql17-server
-#Test command availability 
-RUN pg_dump
 
 # Copy files from repo to home directory
 RUN git clone https://github.com/Nubuki-all/neon_bot bot && cp bot/requirements.txt . && rm -rf bot
