@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - 'main'
+      - 'neon_bot_docker'
 
 jobs:
   docker:
@@ -36,4 +36,4 @@ jobs:
           context: .
           platforms: linux/amd64, linux/arm64
           push: true
-          tags: colserra/fedora37_wf:latest,colserra/fedora37_wf:${{ steps.date.outputs.date }}
+          tags: colserra/neon_bot_docker:latest,colserra/neon_bot_docker:${{ steps.date.outputs.date }}
