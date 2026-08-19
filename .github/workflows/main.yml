@@ -26,6 +26,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Pull repository
+        run: git clone https://github.com/Nubuki-all/neon_bot/ .
+      -
         name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
@@ -33,7 +36,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: neon_bot
           platforms: linux/amd64, linux/arm64
           push: true
           tags: colserra/neon_bot_docker:latest,colserra/neon_bot_docker:${{ steps.date.outputs.date }}
