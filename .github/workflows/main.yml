@@ -27,7 +27,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Pull repository
-        run: git clone https://github.com/Nubuki-all/neon_bot/ .
+        run: git clone https://github.com/Nubuki-all/neon_bot/ 
       -
         name: Get current date
         id: date
